@@ -12,7 +12,7 @@ class AppComponent extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
-    		banner_url: yiyiImage,
+    		bannerUrl: yiyiImage,
         news: ['校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678']
     }
 	}
@@ -24,7 +24,7 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
        	<div className="banner">
-       		<img src={this.state.banner_url}/>
+       		<img src={this.state.bannerUrl}/>
        		<div className="bottom-text" onClick={
 	       		() => {
 	       			console.log("123");

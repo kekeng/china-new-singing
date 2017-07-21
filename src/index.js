@@ -11,5 +11,5 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 	  <Route path="/" component={App}/>
 	  <Route path="/member-list" component={MemberListComponent}/>
-	  <Route path="/member-page" component={MemberPageComponent}/>
+	  <Route path="/member-page/:area/:memberName" component={MemberPageComponent}/>
 	</Router>), document.getElementById('app'));

@@ -19,6 +19,12 @@ var slides = [{
   }];
 
 class MemberPageComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        news: ['校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678']
+    }
+  }
   render() {
   	var self = this;
     var settings = {
@@ -44,7 +50,31 @@ class MemberPageComponent extends React.Component {
           <div className="button">按钮2</div>
           <div className="button">按钮3</div>
         </div>
-        
+        <div className="name-line">{this.props.params.area} - {this.props.params.memberName}</div>
+        <div className="function-layout">
+          <div className="button">送话筒</div>
+          <div className="button">送礼物</div>
+          <div className="button">投票</div>
+          <div className="button">排名</div>
+        </div>
+        <div className="bottom-info">
+          <div className="info-layout">
+            <div className="info">人气值：123456</div>
+            <div className="info">姓名：我勒个去</div>
+            <div className="info">人气排名：1234</div>
+          </div>
+          <div className="info-layout">
+            <div className="info">说明：</div>
+          </div>
+          {this.state.news.map((it, index)=>{
+            return (
+              <div key={index} className="news-list">
+                <img src={yeomanImage}/>
+                {it}
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -17,7 +17,7 @@ class MemberItemComponent extends React.Component {
       <div className="member-item-component">
         <div className="img-layout" ref="imgLayout" style={{width:this.state.imgLayoutLen, height:this.state.imgLayoutLen}} onClick={
           () => {
-            browserHistory.push('/member-page');
+            browserHistory.push('/member-page/广东校园赛区/陈立雄');
           }}>
           <img src={yeomanImage}/>
           <div className="bottom-text">广州赛区</div>
