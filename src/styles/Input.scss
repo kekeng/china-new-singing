@@ -12,10 +12,35 @@
     align-items: center;
   }
 
-  .input {
-    width: 80%;
+  .input-left {
+    width: 87%;
     height: 100%;
     box-sizing: border-box;
-    border: 1px solid red;
+    border-width: 1px 0 1px 1px;
+    border-color: #aaaaaa;
+    border-style: solid;
+    border-radius: 5px 0 0 5px;
+    background: rgba(0, 0, 0, 0);
+    padding-left: 10px;
+    -webkit-appearance: none;
+  }
+
+  .input-right {
+    width: 13%;
+    height: 100%;
+    box-sizing: border-box;
+    border-width: 1px 1px 1px 0;
+    border-color: #aaaaaa;
+    border-style: solid;
+    border-radius: 0 5px 5px 0;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: auto;
+      height: 40%;
+    }
   }
 }

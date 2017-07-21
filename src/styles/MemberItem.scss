@@ -1,0 +1,60 @@
+/* Input Component Styles */
+
+.member-item-component {
+  width:48%;
+  margin-bottom:10px;
+  color: black;
+  background: #dddddd;
+
+  .img-layout {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .bottom-text {
+      width: 100%;
+      height: 30px;
+      position: absolute;
+      left: 0px;
+      bottom: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+    }
+
+    .triangle {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      border-top: 60px solid #aa0000;
+      border-left: 60px solid transparent;
+    }
+
+    .triangle-content {
+      position: absolute;
+      top: 0px;
+      right: 5px;
+      font-size: 28px;
+      color: white;
+    }
+  }
+
+  .txt {
+    padding: 3px;
+  }
+}

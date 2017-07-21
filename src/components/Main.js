@@ -25,7 +25,27 @@ class AppComponent extends React.Component {
       <div className="index">
        	<div className="banner">
        		<img src={this.state.banner_url}/>
-       		<div className="bottom-text" >
+       		<div className="bottom-text" onClick={
+	       		() => {
+	       			console.log("123");
+    					//browserHistory.push('/aa');
+    					//self.context.router.push(path);
+
+    					fetch('test.html').then(response=>{
+                console.log(response);
+    						if(response.ok) {
+                  console.log(response.json())
+    							/*response.blob().then(myBlob=>{
+    								var objectURL = URL.createObjectURL(myBlob);
+    								console.log(objectURL);
+    								console.log(yiyiImage);
+    								self.setState({
+    									banner_url: objectURL
+    								});
+    							})*/
+    						}
+    					});
+	       		}}>
        			第二季《xxxx》广东赛区投票平台
        		</div>
        	</div>
@@ -38,7 +58,10 @@ class AppComponent extends React.Component {
 
        	{this.state.news.map((it, index)=>{
        		return (
-       			<div key={index} className="news-list">
+       			<div key={index} className="news-list" onClick={
+            () => {
+              browserHistory.push('/member-list');
+            }}>
        				<img src={yeomanImage}/>
 	       			{it}
 	       		</div>
