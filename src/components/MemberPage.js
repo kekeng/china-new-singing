@@ -35,11 +35,11 @@ class MemberPageComponent extends React.Component {
     return (
       <div className="member-page-component">
         <Slider {...settings}>
-          <div className="imgLayout"><img src={slides[0].background}/></div>
-          <div className="imgLayout"><img src={slides[1].background}/></div>
-          <div className="imgLayout"><img src={slides[2].background}/></div>
+          <div className="img-layout"><img src={slides[0].background}/></div>
+          <div className="img-layout"><img src={slides[1].background}/></div>
+          <div className="img-layout"><img src={slides[2].background}/></div>
         </Slider>
-        <div className="buttonLayout">
+        <div className="button-layout">
           <div className="button">按钮1</div>
           <div className="button">按钮2</div>
           <div className="button">按钮3</div>

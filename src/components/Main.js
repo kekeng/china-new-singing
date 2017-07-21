@@ -68,7 +68,7 @@ class AppComponent extends React.Component {
        		);
        	})}
        	
-        <div className="bottom_bar">
+        <div className="bottom-bar">
         	<div className="btn right-border">
         		抽奖
         	</div>

@@ -13,10 +13,10 @@ class MemberListComponent extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
-    		banner_url: yiyiImage,
-        totle_members: 39,
-        totle_hot: 4000000,
-        finish_time: 1500537523,
+    		bannerUrl: yiyiImage,
+        totleMembers: 39,
+        totleHot: 4000000,
+        finishTime: 1500537523,
         members: ['校园赛区第七场资格赛网络人气12345678', '校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678']
     }
 	}
@@ -24,20 +24,20 @@ class MemberListComponent extends React.Component {
     router: React.PropTypes.object
   }
   converTime() {
-    var cur_time = Date.parse(new Date()) / 1000;
-    var delta_time = this.state.finish_time - cur_time;
-    var second = delta_time % 60;
-    var min = parseInt(delta_time / 60) % 60;
-    var hour = parseInt(delta_time / 3600) % 24;
-    var day = parseInt(delta_time / 86400)
+    var curTime = Date.parse(new Date()) / 1000;
+    var deltaTime = this.state.finishTime - curTime;
+    var second = deltaTime % 60;
+    var min = parseInt(deltaTime / 60) % 60;
+    var hour = parseInt(deltaTime / 3600) % 24;
+    var day = parseInt(deltaTime / 86400)
     return day + '天' + hour + '时' + min + '分' + second + '秒';
   }
   render() {
   	var self = this;
     return (
-      <div className="memberlist-component">
+      <div className="member-list-component">
        	<div className="banner">
-       		<img src={this.state.banner_url}/>
+       		<img src={this.state.bannerUrl}/>
        	</div>
         <div className="topinfo-layout">
           <div className="layout1">
@@ -50,10 +50,10 @@ class MemberListComponent extends React.Component {
             <div className="info-layout">
               <div>
                 <div className="info-txt margin-right-5">
-                  选手:{this.state.totle_members}
+                  选手:{this.state.totleMembers}
                 </div>
                 <div className="info-txt">
-                  综合人气指数:{this.state.totle_hot}
+                  综合人气指数:{this.state.totleHot}
                 </div>
               </div>
               <div className="info-txt margin-top-5">
