@@ -27,14 +27,17 @@ class AppComponent extends React.Component {
        		<img src={this.state.bannerUrl}/>
        		<div className="bottom-text" onClick={
 	       		() => {
-	       			console.log("123");
+	       			console.log("1234");
     					//browserHistory.push('/aa');
     					//self.context.router.push(path);
 
-    					fetch('test.html').then(response=>{
-                console.log(response);
+    					fetch('/kk/test2.html', {mode: 'cors'}).then(response=>{
+                console.log('response ', response);
     						if(response.ok) {
-                  console.log(response.json())
+                  //console.log('json ', response.json());
+                  response.json().then(data=>{
+                    console.log('data ', data);
+                  });
     							/*response.blob().then(myBlob=>{
     								var objectURL = URL.createObjectURL(myBlob);
     								console.log(objectURL);
@@ -45,7 +48,8 @@ class AppComponent extends React.Component {
     							})*/
     						}
     					});
-	       		}}>
+	       		}
+          }>
        			第二季《xxxx》广东赛区投票平台
        		</div>
        	</div>
@@ -59,9 +63,10 @@ class AppComponent extends React.Component {
        	{this.state.news.map((it, index)=>{
        		return (
        			<div key={index} className="news-list" onClick={
-            () => {
-              browserHistory.push('/member-list');
-            }}>
+              () => {
+                browserHistory.push('/member-list');
+              }
+            }>
        				<img src={yeomanImage}/>
 	       			{it}
 	       		</div>
@@ -69,8 +74,12 @@ class AppComponent extends React.Component {
        	})}
        	
         <div className="bottom-bar">
-        	<div className="btn right-border">
-        		抽奖
+        	<div className="btn right-border" onClick={
+            () => {
+              browserHistory.push('/apply');
+            }
+          }>
+        		我要报名
         	</div>
         	<div className="btn">
         		我的

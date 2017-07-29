@@ -25,7 +25,13 @@ module.exports = {
     hot: true,
     port: defaultSettings.port,
     publicPath: defaultSettings.publicPath,
-    noInfo: false
+    noInfo: false,
+    proxy: {
+      '/kk/*': {
+        target: 'http://resume.kkapp.top',
+        changeOrigin: true
+      }
+    }
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

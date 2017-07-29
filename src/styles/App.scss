@@ -1,7 +1,17 @@
 /* Base Application Styles */
+@media screen and (orientation : portrait) and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (orientation : portrait) and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (orientation : portrait) and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (orientation : portrait) and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+@media screen and (orientation : portrait) and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+@media screen and (orientation : portrait) and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+@media screen and (orientation : portrait) and (min-width:800px){html{font-size:25px}}
+@media screen and (orientation : landscape){html{font-size:12px}}
+
 body {
-  color: #fff;
+  color: black;
   background: white;
+  font-size:1.2rem;
 }
 
 .index {
@@ -35,7 +45,6 @@ body {
 
   .news-list {
     padding: 0px 10px 10px 10px;
-    color: black;
     display: flex;
     align-items: center;
 
@@ -67,6 +76,46 @@ body {
     margin: 10px;
   }
 
+}
+
+.modal-content {
+  font-size: 1.5rem;
+}
+
+.modal-button {
+  margin-top: 20px;
+  background: rgb(131, 175, 155);
+  border-width: 0;
+  border-radius: 2px;
+  padding: 8px;
+}
+
+.centerH {
+  display: flex;
+  justify-content: center;
+}
+
+.centerV {
+  display: flex;
+  align-items: center;
+}
+
+.crossCenterH {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crossCenterV {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-border {

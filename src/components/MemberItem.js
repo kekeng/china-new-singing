@@ -12,10 +12,24 @@ class MemberItemComponent extends React.Component {
       imgLayoutLen: (window.innerWidth-10*2) * 0.48
     }
   }
+  componentDidMount() {
+    window.addEventListener('resize', this.onWindowResize.bind(this));
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize.bind(this));
+  }
+  onWindowResize() {
+    //console.log("onWindowResize");
+    this.setState({
+      imgLayoutLen: (window.innerWidth-10*2) * 0.48
+    });
+  }
+
   render() {
+    console.log("render");
     return (
       <div className="member-item-component">
-        <div className="img-layout" ref="imgLayout" style={{width:this.state.imgLayoutLen, height:this.state.imgLayoutLen}} onClick={
+        <div className="img-layout" style={{width:this.state.imgLayoutLen, height:this.state.imgLayoutLen}} onClick={
           () => {
             browserHistory.push('/member-page/广东校园赛区/陈立雄');
           }}>
