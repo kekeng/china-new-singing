@@ -1,0 +1,116 @@
+/* Input Component Styles */
+
+.new-apply-component {
+  padding: 20px;
+  font-size: 1.2rem;
+
+  .top-img {
+    height: 110px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .title {
+    margin-top: 15px;
+  }
+
+  .info-line {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+    border-width: 0 0 1px 0;
+    border-color: gray;
+    border-style: solid;
+
+    .text {
+      width: 80px;
+    }
+
+    .input {
+      color: black;
+      flex: 1;
+      height: 25px;
+      background: rgba(0, 0, 0, 0);
+      border-color: rgba(0, 0, 0, 0);
+    }
+
+    .avatar-uploader,
+    .avatar-uploader-trigger,
+    .avatar {
+      width: 100px;
+      height: 100px;
+    }
+    .avatar-uploader {
+      display: block;
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .avatar-uploader-trigger {
+      display: table-cell;
+      vertical-align: middle;
+      font-size: 28px;
+      color: #999;
+    }
+  }
+
+  .top-text-margin {
+    margin-top:20px;
+  }
+
+  .fileToUpload {
+    width: 100px;
+    height: 100px;
+    background: #449999;
+
+    .aaass {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .button {
+    color: white;
+    width: 120px;
+    height: 40px;
+    font-size: 1.5rem;
+    background: rgb(241, 74, 74);
+    border-radius: 3px;
+    margin-top: 40px;
+  }
+
+  .cropper-layout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    .cropper-cancel-btn {
+      position: fixed;
+      left: 10px;
+      top: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      background: white;
+      color: black;
+      z-index: 1000;
+      font-size: 1rem;
+    }
+
+    .cropper-ensure-btn {
+      position: fixed;
+      right: 10px;
+      top: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      background: white;
+      color: black;
+      z-index: 1000;
+      font-size: 1rem;
+    }
+  }
+
+}

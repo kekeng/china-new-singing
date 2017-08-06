@@ -76,7 +76,7 @@ class AppComponent extends React.Component {
         <div className="bottom-bar">
         	<div className="btn right-border" onClick={
             () => {
-              browserHistory.push('/apply');
+              browserHistory.push('/new-apply');
             }
           }>
         		我要报名

@@ -30,6 +30,14 @@ module.exports = {
       '/kk/*': {
         target: 'http://resume.kkapp.top',
         changeOrigin: true
+      },
+      '/posts/*': {
+        target: 'http://jsonplaceholder.typicode.com',
+        changeOrigin: true
+      },
+      '/act/*': {
+        target: 'http://cswhmobile.kkapp.top',
+        changeOrigin: true
       }
     }
   },
