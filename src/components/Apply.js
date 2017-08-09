@@ -37,9 +37,6 @@ class ApplyComponent extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 	}
-	contextTypes: {
-    router: React.PropTypes.object
-  }
   componentWillUnmount() {
     document.body.style.backgroundImage = '';
   }
@@ -106,7 +103,7 @@ class ApplyComponent extends React.Component {
           </div>
           : null
         }
-        
+
         <div className={nameClass}>
           <div className="text centerV">姓名:</div>
           <input ref="name" className={infoClass} type="text"  disabled={disabled}/>
@@ -125,7 +122,7 @@ class ApplyComponent extends React.Component {
                 })}
               </select>
           }
-          
+
         </div>
         <div className="info-line">
           <div className="text centerV">身份证号码:</div>
@@ -148,7 +145,7 @@ class ApplyComponent extends React.Component {
             <button className="modal-button" onClick={this.closeModal}>好的</button>
           </div>
         </Modal>
-       	
+
       </div>
     );
   }

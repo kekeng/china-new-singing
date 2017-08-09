@@ -18,9 +18,6 @@ class MemberListComponent extends React.Component {
         members: ['校园赛区第七场资格赛网络人气12345678', '校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678', '校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678']
     }
 	}
-	contextTypes: {
-    router: React.PropTypes.object
-  }
   converTime() {
     var curTime = Date.parse(new Date()) / 1000;
     var deltaTime = this.state.finishTime - curTime;
@@ -68,7 +65,7 @@ class MemberListComponent extends React.Component {
             );
           })}
         </div>
-       	
+
       </div>
     );
   }

@@ -46,9 +46,6 @@ class NewApplyComponent extends React.Component {
     this.beforeUpload = this.beforeUpload.bind(this);
     this.upload = this.upload.bind(this);
 	}
-	contextTypes: {
-    router: React.PropTypes.object
-  }
   componentDidMount() {
     //获取报名信息
     this.showLoading();
@@ -224,7 +221,7 @@ class NewApplyComponent extends React.Component {
           </div>
           : null
         }
-        
+
         <div className={nameClass}>
           <div className="text centerV">学员姓名</div>
           <input ref="name" className="input" type="text"  disabled={disabled}/>
@@ -390,13 +387,13 @@ class NewApplyComponent extends React.Component {
           </div>
           : null
         }
-        
+
         {/*toast框*/}
         { this.state.toast.length > 0 ?
           <div className="toast">{this.state.toast}</div>
           : null
         }
-        
+
       </div>
     );
   }

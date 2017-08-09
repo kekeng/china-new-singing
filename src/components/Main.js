@@ -10,14 +10,11 @@ let yiyiImage = require('../images/WechatIMG11.jpg');
 
 class AppComponent extends React.Component {
 	constructor(props) {
-		super(props);
+    super(props);
     this.state = {
-    		bannerUrl: yiyiImage,
-        news: ['校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678']
+      bannerUrl: yiyiImage,
+      news: ['校园赛区第七场资格赛网络人气12345678', '校园赛区第八场资格赛网络人气12345678']
     }
-	}
-	contextTypes: {
-    router: React.PropTypes.object
   }
   render() {
     return (
@@ -28,7 +25,6 @@ class AppComponent extends React.Component {
 	       		() => {
 	       			console.log('1234');
     					//browserHistory.push('/aa');
-    					//self.context.router.push(path);
 
     					fetch('/kk/test2.html', {mode: 'cors'}).then(response=>{
                 console.log('response ', response);
@@ -71,7 +67,7 @@ class AppComponent extends React.Component {
 	       		</div>
        		);
        	})}
-       	
+
         <div className="bottom-bar">
         	<div className="btn right-border" onClick={
             () => {
