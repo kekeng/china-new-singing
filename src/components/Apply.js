@@ -15,7 +15,7 @@ const customStyles = {
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
-    width               : '50%',
+    width               : '50%'
   }
 };
 
@@ -79,21 +79,20 @@ class ApplyComponent extends React.Component {
   console.log(value, selectedOptions);
 }
   render() {
-  	var self = this;
     let infoClass;
     let nameClass;
     let disabled;
     let btnText;
     if(this.state.isResultPage) {
-      infoClass = "input result";
-      nameClass = "info-line"
-      disabled = "disabled";
-      btnText = "报名成功"
+      infoClass = 'input result';
+      nameClass = 'info-line';
+      disabled = 'disabled';
+      btnText = '报名成功';
     } else {
-      infoClass = "input";
-      nameClass = "info-line top-text-margin"
-      disabled = "";
-      btnText = "点击报名"
+      infoClass = 'input';
+      nameClass = 'info-line top-text-margin';
+      disabled = '';
+      btnText = '点击报名';
     }
     return (
       <div className="apply-component crossCenterH">

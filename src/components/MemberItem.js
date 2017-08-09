@@ -26,7 +26,6 @@ class MemberItemComponent extends React.Component {
   }
 
   render() {
-    console.log("render");
     return (
       <div className="member-item-component">
         <div className="img-layout" style={{width:this.state.imgLayoutLen, height:this.state.imgLayoutLen}} onClick={

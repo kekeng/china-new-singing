@@ -1,15 +1,13 @@
 require('styles/NewApply.scss');
 require('styles/App.scss');
-import 'antd/dist/antd.css';
+//import 'antd/dist/antd.css';
 import 'cropperjs/dist/cropper.css';
 
 import React from 'react';
 import {browserHistory } from 'react-router'
-import { Spin, Modal, Button, Upload, Icon, message } from 'antd';
+import { Spin, Modal, Upload, Icon } from 'antd';
 import Cropper from 'react-cropper';
-import config from 'config'
-
-let newApplyBg = require('../images/new_apply_bg.png');
+import config from 'config';
 
 class NewApplyComponent extends React.Component {
   //上传头像控件返回promise的reject回调
@@ -23,7 +21,7 @@ class NewApplyComponent extends React.Component {
 		super(props);
     this.state = {
       topImgUrl: '',
-      area: [{value: 'guangdong', label: '广东赛区', data: [{value: 'chaozhou', label: '潮州赛区'}, {value: 'shantou', label: '汕头赛区'}]}],
+      area: [], //[{id: '1234567890', orgName: '广东赛区', children: [{id: '1234567890', orgName: '潮州赛区'}, {id: '1234567890', orgName: '汕头赛区'}]}],
       sex: [], //[{key: 'MALE', name: '男', value: '1'}, {key:'FEMALE', name: '女', value: '0'}],
       profession: [], //[{key: 'SINGER', name: '歌手', value: '01'}, {key:'STUDENT', name: '学生', value: '02'}],
       selectArea1: 0,
@@ -52,17 +50,20 @@ class NewApplyComponent extends React.Component {
     router: React.PropTypes.object
   }
   componentDidMount() {
-    //alert(config.getApplyInfo);
     //获取报名信息
     this.showLoading();
-    fetch(config.getApplyInfo, {mode: 'cors', headers:{'Access-Control-Allow-Origin':'*'}}).then(response=>{
+    var formData = new FormData();
+    formData.append('activityId', this.props.params.id);
+    fetch(config.getApplyInfo, {mode: 'cors', method: 'POST', body: formData}).then(response=>{
+      console.log('response ', response);
       if(response.ok) {
         response.json().then(data=>{
-          console.log("data ", data);
+          console.log('data ', data);
           this.setState({
-            topImgUrl: newApplyBg,
+            topImgUrl: data.activityLogo,
             sex: data.gender,
-            profession: data.occupation
+            profession: data.occupation,
+            area: data.orgs
           });
         });
       }
@@ -112,6 +113,7 @@ class NewApplyComponent extends React.Component {
       this.showToast('请上传头像!');
     } else {
       var formData = new FormData();
+      formData.append('activityId', this.props.params.id);
       formData.append('playerName', this.refs.name.value);
       formData.append('playerGender', this.refs.sexSelect.value);
       formData.append('playerTel', this.refs.phone.value);
@@ -119,6 +121,7 @@ class NewApplyComponent extends React.Component {
       formData.append('company', this.refs.work.value);
       formData.append('occupation', this.refs.professionSelect.value);
       formData.append('profileImageUrl', this.state.avatarOnlineUrl);
+      formData.append('orgId', this.refs.areaSelect2.value);
       var that = this;
       this.showLoading();
       fetch(config.apply, {mode: 'cors', method: 'POST', body: formData}).then(response=>{
@@ -126,14 +129,17 @@ class NewApplyComponent extends React.Component {
         if(response.ok) {
           response.json().then(data=>{
             console.log('apply data ', data);
-            if(data.errMsgs.length == 0) {//success
-              /*this.setState({
-                selectArea: this.refs.areaSelect.value,
+            console.log('sex = ', this.refs.sexSelect);
+            if(data.result == '1') {//success
+              this.setState({
+                selectSex: this.refs.sexSelect.text,
+                selectArea: data.mo.orgName,
+                selectProfession: this.refs.professionSelect.text,
                 isResultPage: true,
-                num: 101
-              });*/
+                num: data.mo.playerNo
+              });
             } else {
-              showToast(data.errMsgs[0]);
+              that.showToast(data.errMsgs[0]);
             }
           });
         }
@@ -190,16 +196,19 @@ class NewApplyComponent extends React.Component {
     let nameClass;
     let disabled;
     let btnText;
+    let btnClass;
     if(this.state.isResultPage) {
-      nameClass = "info-line"
-      disabled = "disabled";
-      btnText = "报名成功"
+      nameClass = 'info-line';
+      disabled = 'disabled';
+      btnText = '报名成功';
+      btnClass = 'ensure-button center'
     } else {
-      nameClass = "info-line top-text-margin"
-      disabled = "";
-      btnText = "点击报名"
+      nameClass = 'info-line top-text-margin';
+      disabled = '';
+      btnText = '点击报名';
+      btnClass = 'apply-button center'
     }
-    return (      
+    return (
       <div className="new-apply-component crossCenterH">
         <img className="top-img" src={this.state.topImgUrl}/>
        	<div className="title">
@@ -265,18 +274,21 @@ class NewApplyComponent extends React.Component {
           { this.state.isResultPage ?
             <input ref="areaInput" value={this.state.selectArea} className="input" type="text"  disabled={disabled}/>
             : (
-              <div>
-                <select ref="areaSelect1">
-                  {this.state.area.map((it, index) => {
-                    return (<option key={index} value={it.value}>{it.label}</option>);
-                  })}
-                </select>
-                <select className="margin-left-5" ref="areaSelect2">
-                  {this.state.area[this.state.selectArea1].data.map((it, index) => {
-                    return (<option key={index} value={it.value}>{it.label}</option>);
-                  })}
-                </select>
-              </div>)
+                this.state.area.length > 0 ?
+                <div>
+                  <select ref="areaSelect1">
+                    {this.state.area.map((it, index) => {
+                      return (<option key={index} value={it.id}>{it.orgName}</option>);
+                    })}
+                  </select>
+                  <select className="margin-left-5" ref="areaSelect2">
+                    {this.state.area[this.state.selectArea1].children.map((it, index) => {
+                      return (<option key={index} value={it.id}>{it.orgName}</option>);
+                    })}
+                  </select>
+                </div>
+                : null
+              )
           }
         </div>
 
@@ -291,14 +303,14 @@ class NewApplyComponent extends React.Component {
             customRequest={this.upload}
           >
           { this.state.avatarUrl ?
-              <img src={avatarUrl} alt="" className="avatar" /> :
+              <img src={this.state.avatarUrl} alt="" className="avatar" /> :
               <Icon type="plus" className="avatar-uploader-trigger" />
           }
         </Upload>
         </div>
 
         {/*报名按钮*/}
-        <div className="button center" onClick={
+        <div className={btnClass} onClick={
           () => {
             if(this.state.isResultPage) {
               browserHistory.push('/');
@@ -314,21 +326,22 @@ class NewApplyComponent extends React.Component {
           footer={null}
           maskClosable={false}
           closable={false}
-          wrapClassName={"antd-loading-modal"}
+          wrapClassName={'antd-loading-modal'}
           >
           <div className="centerH">
             <Spin />
-          </div> 
+          </div>
         </Modal>
 
         {/*剪裁界面*/}
-        { this.state.showImgCropper ? 
+        { this.state.showImgCropper ?
           <div className="cropper-layout">
             <Cropper
               ref='cropper'
               src={this.state.avatarTmpUrl}
               style={{height: '100%', width: '100%'}}
               // Cropper.js options
+              dragMode='move'
               aspectRatio={1 / 1}
               guides={true}
               background={true} />
@@ -341,19 +354,37 @@ class NewApplyComponent extends React.Component {
             }>取消</div>
             <div className="cropper-ensure-btn center" onClick={
               () => {
-                if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
+                const canvas = this.refs.cropper.getCroppedCanvas();
+                if (typeof canvas === 'undefined') {
                   this.uploadReject();
                   return;
                 }
                 this.setState({
                   showImgCropper: false,
-                  avatarUrl: this.refs.cropper.getCroppedCanvas().toDataURL(),
+                  avatarUrl: canvas.toDataURL()
                 });
-                var that = this;
-                this.refs.cropper.getCroppedCanvas().toBlob(blob => {
-                  this.avatarBlob = blob;
+
+                console.log('canvas = ', canvas);
+                console.log('canvas2. = ', HTMLCanvasElement.prototype);
+
+                if (!HTMLCanvasElement.prototype.toBlob) {
+                  var binStr = atob(canvas.toDataURL().split(',')[1] ),
+                  len = binStr.length,
+                  arr = new Uint8Array(len);
+
+                  for (var i=0; i<len; i++ ) {
+                    arr[i] = binStr.charCodeAt(i);
+                  }
+
+                  this.avatarBlob = new Blob( [arr], {type: 'image/png'} );
                   this.uploadResolve();
-                });
+                } else {
+                  canvas.toBlob(blob => {
+                    this.avatarBlob = blob;
+                    this.uploadResolve();
+                  });
+                }
+
               }
             }>确定</div>
           </div>

@@ -5,17 +5,16 @@ import {browserHistory } from 'react-router'
 import Slider from 'react-slick';
 
 let yeomanImage = require('../images/yeoman.png');
-let yiyiImage = require('../images/WechatIMG11.jpg');
 
 var slides = [{
     background: require('../images/1.jpg'),
-    link: "https://zhuangtongfa.github.io/"
+    link: 'https://zhuangtongfa.github.io/'
   }, {
     background: require('../images/2.jpg'),
-    link: "https://zhuangtongfa.github.io/"
+    link: 'https://zhuangtongfa.github.io/'
   }, {
     background: require('../images/3.jpg'),
-    link:"https://zhuangtongfa.github.io/"
+    link: 'https://zhuangtongfa.github.io/'
   }];
 
 class MemberPageComponent extends React.Component {
@@ -26,7 +25,6 @@ class MemberPageComponent extends React.Component {
     }
   }
   render() {
-  	var self = this;
     var settings = {
       dots: false,
       infinite: true,

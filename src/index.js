@@ -15,5 +15,5 @@ ReactDOM.render((
 	  <Route path="/member-list" component={MemberListComponent}/>
 	  <Route path="/member-page/:area/:memberName" component={MemberPageComponent}/>
 	  <Route path="/apply" component={ApplyComponent}/>
-	  <Route path="/new-apply" component={NewApplyComponent}/>
+	  <Route path="/new-apply/:id" component={NewApplyComponent}/>
 	</Router>), document.getElementById('app'));

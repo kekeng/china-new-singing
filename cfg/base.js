@@ -38,6 +38,10 @@ module.exports = {
       '/act/*': {
         target: 'http://cswhmobile.kkapp.top',
         changeOrigin: true
+      },
+      '/ecmobile/*': {
+        target: 'http://beta.huilinwj.com',
+        changeOrigin: true
       }
     }
   },

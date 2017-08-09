@@ -99,7 +99,9 @@ body {
 
 .toast {
   position: fixed;
+  left: 50%;
   bottom: 60px;
+  transform: translate(-50%, 0);
   border-radius: 5px;
   padding: 10px;
   background: rgba(0, 0, 0, 0.5);

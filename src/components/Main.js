@@ -20,14 +20,13 @@ class AppComponent extends React.Component {
     router: React.PropTypes.object
   }
   render() {
-  	var self = this;
     return (
       <div className="index">
        	<div className="banner">
        		<img src={this.state.bannerUrl}/>
        		<div className="bottom-text" onClick={
 	       		() => {
-	       			console.log("1234");
+	       			console.log('1234');
     					//browserHistory.push('/aa');
     					//self.context.router.push(path);
 
@@ -76,7 +75,7 @@ class AppComponent extends React.Component {
         <div className="bottom-bar">
         	<div className="btn right-border" onClick={
             () => {
-              browserHistory.push('/new-apply');
+              browserHistory.push('/new-apply/a7f96b6008104606b2d0439e7084bbf7');
             }
           }>
         		我要报名

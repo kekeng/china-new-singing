@@ -2,11 +2,9 @@ require('styles/MemberList.scss');
 require('styles/App.scss');
 
 import React from 'react';
-import {browserHistory } from 'react-router'
 import InputComponent from './Input.js'
 import MemberItemComponent from './MemberItem.js'
 
-let yeomanImage = require('../images/yeoman.png');
 let yiyiImage = require('../images/WechatIMG11.jpg');
 
 class MemberListComponent extends React.Component {
@@ -33,7 +31,6 @@ class MemberListComponent extends React.Component {
     return day + '天' + hour + '时' + min + '分' + second + '秒';
   }
   render() {
-  	var self = this;
     return (
       <div className="member-list-component">
        	<div className="banner">
